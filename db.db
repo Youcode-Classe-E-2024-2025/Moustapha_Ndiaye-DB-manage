@@ -1,0 +1,44 @@
+-- Create the Books table
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL, 
+    author TEXT NOT NULL, 
+    price REAL NOT NULL, 
+    stock INTEGER NOT NULL
+);
+
+-- Create the Clients table
+CREATE TABLE clients (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    registration_date DATE NOT NULL
+);
+
+
+-- Insert Books data
+INSERT INTO books (title, author, price, stock) VALUES
+('Les Misérables', 'Victor Hugo', 20.50, 12),
+('The Little Prince', 'Antoine de Saint-Exupéry', 15.99, 5),
+('1984', 'George Orwell', 18.00, 8),
+('Harry Potter and the Philosopher\'s Stone', 'J.K. Rowling', 25.00, 10);
+
+-- Insert Clients data
+INSERT INTO clients (name, email, registration_date) VALUES
+('Jean Dupont', 'jean.dupont@email.fr', '2024-01-10'),
+('Alice Martin', 'alice.martin@email.fr', '2024-02-15'),
+('Bob Robert', 'bob.robert@email.fr', '2024-03-20');
+
+SELECT title, author, price FROM books;
+SELECT title, author, price FROM books WHERE price > 20;
+SELECT name, email, registration_date FROM clients WHERE registration_date > '2024-02-01';
+UPDATE books SET stock = stock - 1 WHERE title = '1984';
+DELETE FROM clients WHERE email = 'bob.robert@email.fr';
+INSERT INTO books (title, author, price, stock) VALUES
+('The Lord of the Rings', 'J.R.R. Tolkien', 30.00, 7);
+
+
+
+
+
+
